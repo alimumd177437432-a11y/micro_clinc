@@ -65,9 +65,10 @@ export const setupSocketHandlers = (io) => {
 
         // ⏰ حساب وقت انتهاء المحادثة (date + timeSlot + 30 دقيقة)
         const [slotHours, slotMinutes] = appointment.timeSlot.split(":").map(Number);
-        const appointmentDate = new Date(appointment.date);
-        appointmentDate.setHours(slotHours, slotMinutes, 0, 0);
-        const chatEndTime = new Date(appointmentDate.getTime() + 30 * 60 * 1000);
+        // نأخذ التاريخ بدون وقت ونضيف الـ timeSlot كـ UTC offset +3 (فلسطين/الأردن)
+        const dateOnly = new Date(appointment.date).toISOString().split("T")[0];
+        const appointmentStart = new Date(`${dateOnly}T${appointment.timeSlot}:00.000+03:00`);
+        const chatEndTime = new Date(appointmentStart.getTime() + 30 * 60 * 1000);
         const now = new Date();
 
         // التحقق: إذا مر على الموعد أكثر من 30 دقيقة، امنع الدخول
