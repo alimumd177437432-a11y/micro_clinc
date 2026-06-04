@@ -3,10 +3,10 @@ import { io } from "socket.io-client";
 import readline from "readline";
 
 // 🔐 ضع توكن الدكتور هنا (سجل دخول أولاً)
-const DOCTOR_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMWVhY2JlNWY2ZjNlOTFjYjc4OWZiMyIsIm5hbWUiOiLYr9mD2KrZiNixINmF2K3ZhdmI2K8iLCJlbWFpbCI6ImRvY3RvckBjbGluaWMuY29tIiwicm9sZSI6ImRvY3RvciIsInBob25lIjoiMDEwMDAwMDAwMDAiLCJpYXQiOjE3ODA0NzAxMDksImV4cCI6MTc4MDU1NjUwOX0.r-N9DxI4WBTiSCd4RAiB8Hlv5-GEpu6pvKMP8QJf_UM";
+const DOCTOR_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMjE0NGQxYzQ4MmRlYzQ0NmFkYzBkNiIsIm5hbWUiOiJtb2hhbWVkIiwiZW1haWwiOiJhbGltdW1kMTc3NDM3NDNAZ21haWwuY29tIiwicm9sZSI6ImRvY3RvciIsInBob25lIjoiMDUzMjY1NTIzNTYiLCJpYXQiOjE3ODA1NjgxMjYsImV4cCI6MTc4MDY1NDUyNn0.XKHdmhIXZedlHuxy_U9ZDtGGD4Qaicux4ZDmcw05m5A";
 
 // 🔐 ضع ID الموعد هنا (نفس المريض)
-const APPOINTMENT_ID = "6a1fde01c4130e5c5c9b4373";
+const APPOINTMENT_ID = "6a21467ac482dec446adc10f";
 
 const colors = {
   reset: "\x1b[0m",
