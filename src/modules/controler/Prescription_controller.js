@@ -2,7 +2,7 @@ import { prescriptionModel } from "../models/Prescription_model.js";
 import { appointmentModel } from "../models/Appointment_model.js";
 import { userModel } from "../models/user_model.js";
 import { ErrorHandler, SendError } from "../../services/errorhanderler.js";
-import { sendPrescriptionEmail } from "../../utils/nodemailer/prescriptionEmail.js";
+import { sendPrescriptionEmail } from "../../utils/nodemailer/prescriptionemail.js";
 
 // ── الدكتور ينهي الجلسة ويرسل الروشتة
 export const endSessionAndSendPrescription = ErrorHandler(async (req, res) => {

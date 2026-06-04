@@ -52,7 +52,7 @@ export const sendPrescriptionEmail = async ({ patientEmail, patientName, doctorN
       </div>
 
       <!-- Medications -->
-      <h3 style="color:#333;margin-bottom:12px;">💊 الأدوية الموصوفة</h3>
+      <h3 style="color:#333;margin-bottom:12px;">💊 الأدوية الموصوفة للمريض</h3>
       <table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;border:1px solid #eee;">
         <thead>
           <tr style="background:#667eea;">

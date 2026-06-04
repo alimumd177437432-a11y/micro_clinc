@@ -10,14 +10,12 @@ const prescriptionRouter = Router();
 
 prescriptionRouter.use(authentication);
 
-// الدكتور — ينهي الجلسة ويرسل الروشتة
 prescriptionRouter.post(
   "/appointments/:appointmentId/end-session",
   authoriziation("doctor"),
   endSessionAndSendPrescription
 );
 
-// الدكتور — يشوف روشتة حجز معين
 prescriptionRouter.get(
   "/appointments/:appointmentId",
   authoriziation("doctor"),
