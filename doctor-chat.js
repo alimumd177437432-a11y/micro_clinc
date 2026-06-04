@@ -28,7 +28,7 @@ let socket = null;
 const connectToChat = () => {
   console.log(`\n${colors.cyan}🏥 جاري الاتصال بالعيادة الرقمية...${colors.reset}`);
   
-  socket = io("http://localhost:2000", {
+  socket = io("https://micro-clinc.onrender.com", {
     auth: { token: DOCTOR_TOKEN },
     transports: ["websocket"]
   });
