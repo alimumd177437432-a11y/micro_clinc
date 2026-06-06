@@ -19,7 +19,7 @@ v1Router.use("/doctor", doctorRouter);
 v1Router.use("/patient", patientRouter);
 v1Router.use("/webhooks", webhookRouter);
 v1Router.use("/prescription", prescriptionRouter);
-v1Router.use("/notifications", notificationRouterr);
+v1Router.use("/notifications", notificationRouter);
 
 v1Router.post("/upload/image", 
   authentication, 
