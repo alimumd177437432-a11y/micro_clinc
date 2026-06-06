@@ -1,4 +1,4 @@
-import { notificationModel } from "../models/Notification_model.js";
+import { notificationModel } from "../models/notification_model.js";
 import { ErrorHandler } from "../../services/errorhanderler.js";
 
 // جيب إشعاراتي
