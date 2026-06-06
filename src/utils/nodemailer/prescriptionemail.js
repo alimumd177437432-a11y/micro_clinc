@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { prescriptionTemplate } from "./prescriptiontemplate";
+import { prescriptionTemplate } from "./prescriptiontemplate.js";
 
 export const sendPrescriptionEmail = async ({ patientEmail, patientName, doctorName, diagnosis, medications, appointmentDate }) => {
   
