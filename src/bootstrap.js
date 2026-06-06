@@ -18,11 +18,11 @@ export const bootstrap = async (app) => {
   // إعداد Socket.IO
   const io = new SocketServer(server, {
     cors: {
-      origin: "*", // للسماح بالاتصال من أي فرونت (عدل حسب الحاجة)
+      origin: "*", 
       methods: ["GET", "POST"],
       credentials: true
     },
-    path: "/socket.io" // المسار الافتراضي
+    path: "/socket.io"
   });
   
   // إدارة اتصالات Socket
