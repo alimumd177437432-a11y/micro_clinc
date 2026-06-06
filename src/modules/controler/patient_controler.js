@@ -94,6 +94,15 @@ export const bookAppointment = ErrorHandler(async (req, res) => {
     paymentStatus: "unpaid",
   });
 
+  // 🔔 إشعار للمريض
+  await sendNotification({
+    userId: patientId,
+    title: "✅ تم حجز موعدك بنجاح",
+    body: `تم حجز موعدك بتاريخ ${date} الساعة ${slot.time} — يرجى إتمام الدفع`,
+    type: "booking",
+    appointmentId: appointment._id,
+  });
+
   res.status(201).json({
     status: "success",
     message: "تم تأكيد حجزك بنجاح، يرجى إتمام الدفع",

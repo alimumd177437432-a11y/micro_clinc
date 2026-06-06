@@ -1,6 +1,5 @@
 // notification-test.js
 import { io } from "socket.io-client";
-import readline from "readline";
 
 const colors = {
   reset: "\x1b[0m",
@@ -11,16 +10,19 @@ const colors = {
   magenta: "\x1b[35m"
 };
 
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-const ask = (q) => new Promise((resolve) => rl.question(q, resolve));
-
 console.log(`${colors.cyan}`);
 console.log("╔═══════════════════════════════════════════╗");
 console.log("║     🔔 تجربة الإشعارات - عيادة الشفاء    ║");
 console.log("╚═══════════════════════════════════════════╝");
 console.log(`${colors.reset}`);
 
-const TOKEN = await ask(`${colors.cyan}🔑 أدخل التوكن: ${colors.reset}`);
+// خذ التوكن من الـ argument مباشرة
+const TOKEN = process.argv[2];
+
+if (!TOKEN) {
+  console.log(`${colors.red}❌ استخدم: node notification-test.js YOUR_TOKEN${colors.reset}`);
+  process.exit(1);
+}
 
 const socket = io("https://micro-clinc.onrender.com", {
   auth: { token: TOKEN },
