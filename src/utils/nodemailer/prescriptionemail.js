@@ -1,5 +1,6 @@
 import { Resend } from "resend";
-import { prescriptionTemplate } from "./prescriptionTemplate.js";
+import { prescriptionTemplate } from "./prescriptiontemplate.js";
+
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
