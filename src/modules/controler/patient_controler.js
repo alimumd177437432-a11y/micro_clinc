@@ -1,4 +1,5 @@
 import { ErrorHandler, SendError } from "../../services/errorhanderler.js";
+import { sendNotification } from "../../services/notificationService.js";
 import { doctorDetailsModel } from "../models/Doctor_model.js";
 import { appointmentModel } from "../models/Appointment_model.js";
 import { userModel } from "../models/user_model.js";

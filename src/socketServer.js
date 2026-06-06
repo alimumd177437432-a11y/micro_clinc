@@ -4,7 +4,10 @@ import { messageModel } from "./modules/models/Message_model.js";
 import { appointmentModel } from "./modules/models/Appointment_model.js";
 import { userModel } from "./modules/models/user_model.js";
 
+import { setIO } from "./services/notificationService.js";
+
 export const setupSocketHandlers = (io) => {
+  setIO(io); // ✅ حفظ الـ io عشان نستخدمه في الإشعارات
   // مصادقة Socket باستخدام JWT
   io.use(async (socket, next) => {
     try {
@@ -36,6 +39,9 @@ export const setupSocketHandlers = (io) => {
 
   io.on("connection", (socket) => {
     console.log(`✅ User connected: ${socket.user.name} (${socket.user.role})`);
+    
+    // ✅ كل مستخدم يدخل غرفته الخاصة عشان يستقبل إشعاراته
+    socket.join(`user_${socket.user.id}`);
 
     // 1. الانضمام إلى غرفة الموعد
     socket.on("join_appointment_room", async ({ appointmentId }) => {

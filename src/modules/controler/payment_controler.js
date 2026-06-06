@@ -2,6 +2,7 @@ import Stripe from "stripe";
 import { appointmentModel } from "../models/Appointment_model.js";
 import { doctorDetailsModel } from "../models/Doctor_model.js";
 import { ErrorHandler, SendError } from "../../services/errorhanderler.js";
+import { sendNotification } from "../../services/notificationService.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -99,6 +100,15 @@ export const handleStripeWebhook = async (req, res) => {
       appointment.paymentStatus = "paid";
       appointment.status = "confirmed";
       await appointment.save();
+
+      // 🔔 إشعار للمريض بعد الدفع
+      await sendNotification({
+        userId: appointment.patientId.toString(),
+        title: "💳 تم استلام دفعتك بنجاح",
+        body: `تم تأكيد موعدك ودفع الرسوم بنجاح. موعدك بتاريخ ${new Date(appointment.date).toLocaleDateString("ar-EG")} الساعة ${appointment.timeSlot}`,
+        type: "payment",
+        appointmentId: appointment._id,
+      });
       console.log("✅ تم التحديث");
 
       console.log(`✅ Stripe: تم الدفع للحجز ${appointmentId} | $${session.amount_total / 100}`);

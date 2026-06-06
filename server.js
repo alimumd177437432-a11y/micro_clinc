@@ -1,5 +1,6 @@
 import express from "express";
 import { bootstrap } from "./src/bootstrap.js";
+import { startReminderCron } from "./src/services/reminderCron.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -16,3 +17,4 @@ app.use((req, res, next) => {
 
 
 bootstrap(app);
+startReminderCron();
