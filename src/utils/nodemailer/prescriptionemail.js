@@ -7,9 +7,10 @@ export const sendPrescriptionEmail = async ({ patientEmail, patientName, doctorN
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
+    family: 4, // ✅ إجبار IPv4 عشان يشتغل على Render
     auth: {
       user: process.env.NODEMAILER_USER,
-      pass: process.env.NODEMAILER_PASS, // App Password من Google
+      pass: process.env.NODEMAILER_PASS,
     },
   });
 
