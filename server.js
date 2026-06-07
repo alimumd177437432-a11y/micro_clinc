@@ -14,6 +14,9 @@ app.use((req, res, next) => {
     express.json({ limit: "20mb" })(req, res, next);
   }
 });
+app.get('/', (req, res) => {
+    res.status(200).send('System is active');
+});
 
 
 bootstrap(app);

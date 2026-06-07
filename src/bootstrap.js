@@ -6,6 +6,7 @@ import { v1Router } from "./v1_routes.js";
 import { DBconection } from "./DBconection.js";
 import { setupSocketHandlers } from "./socketServer.js";
 import dotenv from "dotenv";
+import { globalLimiter } from "./middelwares.js/rateLimiter.js";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ export const bootstrap = async (app) => {
   
   // Middlewares
   app.use(cors());
+  app.use("/micro", globalLimiter);
   app.use(express.json({ limit: "20mb" }));
   app.use(express.urlencoded({ extended: true, limit: "20mb" }));
   
