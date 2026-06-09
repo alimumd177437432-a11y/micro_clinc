@@ -255,9 +255,9 @@ const socket = io("https://micro-clinc.onrender.com", {
 
         NewPasswordInput: {
           type: "object",
-          required: ["newPassword", "otp"],
+          required: ["password", "otp"],
           properties: {
-            newPassword: { type: "string", example: "newpassword123" },
+            password: { type: "string", example: "newpassword123" },
             otp: { type: "string", example: "123456" },
           },
         },
