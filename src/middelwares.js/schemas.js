@@ -15,12 +15,13 @@ export const signupSchema = Joi.object({
     "string.min": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
     "any.required": "كلمة المرور مطلوبة",
   }),
-  role: Joi.string().valid("patient", "doctor").required().messages({
-    "any.only": "الدور يجب أن يكون patient أو doctor",
-    "any.required": "الدور مطلوب",
+  phone: Joi.string().required().messages({ 
+    "any.required": "رقم الهاتف مطلوب",
   }),
-  phone: Joi.string().optional(),
-  gender: Joi.string().valid("male", "female").optional(),
+  gender: Joi.string().valid("male", "female").required().messages({  
+    "any.only": "الجنس يجب أن يكون male أو female",
+    "any.required": "الجنس مطلوب",
+  }),
 });
 
 export const loginSchema = Joi.object({
@@ -65,18 +66,25 @@ export const bookAppointmentSchema = Joi.object({
 
 // ── Doctor
 export const updateDoctorSchema = Joi.object({
-  specialty: Joi.string().min(2).optional(),
-  bio: Joi.string().max(500).optional(),
-  consultationFee: Joi.number().min(0).optional().messages({
-    "number.min": "رسوم الاستشارة يجب أن تكون موجبة",
+  specialty: Joi.string().min(2).required().messages({  
+    "string.min": "التخصص يجب أن يكون حرفين على الأقل",
+    "any.required": "التخصص مطلوب",
   }),
+  consultationFee: Joi.number().min(0).required().messages({  
+    "number.min": "رسوم الاستشارة يجب أن تكون موجبة",
+    "any.required": "رسوم الاستشارة مطلوبة",
+  }),
+  bio: Joi.string().max(500).optional(),
   workingDays: Joi.array().items(Joi.string()).optional(),
-  startTime: Joi.string().optional(),
-  endTime: Joi.string().optional(),
-  slots: Joi.array().optional(),
+  startTime: Joi.string().required().messages({  
+    "any.required": "وقت بدء العمل مطلوب",
+  }),
+  endTime: Joi.string().required().messages({  
+    "any.required": "وقت انتهاء العمل مطلوب",
+  }),
 });
 
-// ── Prescription
+// ── Prescription (نفسه ما تغير)
 export const prescriptionSchema = Joi.object({
   diagnosis: Joi.string().min(3).required().messages({
     "string.min": "التشخيص يجب أن يكون 3 أحرف على الأقل",

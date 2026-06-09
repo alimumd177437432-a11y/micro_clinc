@@ -1,4 +1,5 @@
 import cors from "cors";
+import { setupSwagger } from "./swagger.js";
 import express from "express";
 import http from "http";
 import { Server as SocketServer } from "socket.io";
@@ -37,6 +38,7 @@ export const bootstrap = async (app) => {
   
   // Routes
   app.use("/micro/v1", v1Router);
+  setupSwagger(app);
   
   // Error handling middleware
   app.use((error, req, res, next) => {

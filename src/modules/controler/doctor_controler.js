@@ -70,7 +70,7 @@ export const updateDoctorProfile = ErrorHandler(async (req, res) => {
 
 
 export const getMyProfile = ErrorHandler(async (req, res) => {
-  const doctorId = req.user._id;
+  const doctorId = req.user.id;
   const profile = await doctorDetailsModel.findOne({ userId: doctorId })
     .populate("userId", "name email role gender");
 
