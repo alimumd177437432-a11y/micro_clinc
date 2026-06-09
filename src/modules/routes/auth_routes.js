@@ -223,11 +223,35 @@ authRouter.post("/ask-reset-password", authLimiter, validate(resetPasswordSchema
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - password
+ *               - otp
  *             properties:
- *               newPassword: { type: string, example: newpassword123 }
+ *               password:
+ *                 type: string
+ *                 example: "123456789"
+ *               otp:
+ *                 type: string
+ *                 example: "482931"
  *     responses:
  *       200:
  *         description: تم إعادة تعيين كلمة المرور
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Success'
+ *       400:
+ *         description: OTP غير صحيح
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       404:
+ *         description: المستخدم غير موجود
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 authRouter.post("/reset-password/:otpToken", validate(newPasswordSchema), newpassword);
 
