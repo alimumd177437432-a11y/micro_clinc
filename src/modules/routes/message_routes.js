@@ -7,7 +7,7 @@ messageRouter.use(authentication);
 
 /**
  * @swagger
- * /messages/appointment/{appointmentId}:
+ * /message/appointment/{appointmentId}:
  *   get:
  *     summary: جلب رسائل موعد معين
  *     tags: [Messages]
@@ -41,7 +41,7 @@ messageRouter.get("/appointment/:appointmentId", getAppointmentMessages);
 
 /**
  * @swagger
- * /messages/{messageId}:
+ * /message/{messageId}:
  *   delete:
  *     summary: حذف رسالة
  *     tags: [Messages]

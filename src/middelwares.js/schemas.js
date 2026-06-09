@@ -42,9 +42,13 @@ export const resetPasswordSchema = Joi.object({
 });
 
 export const newPasswordSchema = Joi.object({
-  newPassword: Joi.string().min(6).required().messages({
+  password: Joi.string().min(6).required().messages({
     "string.min": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
-    "any.required": "كلمة المرور الجديدة مطلوبة",
+    "any.required": "كلمة المرور مطلوبة",
+  }),
+  otp: Joi.string().length(6).required().messages({
+    "string.length": "رمز التحقق يجب أن يكون 6 أرقام",
+    "any.required": "رمز التحقق مطلوب",
   }),
 });
 
